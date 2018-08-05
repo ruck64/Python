@@ -1,0 +1,35 @@
+#python pig latin one word
+
+list = input();
+
+words = list.split()
+
+flag = False
+checker = 0
+
+ending = ''
+newWord = ''
+beginning = ''
+
+if len(words) > 0:
+	for word in words:
+		flag = False
+		for char in word:
+			if (flag == False and (char == 'a' or char == 'e' or char == 'i'  or char == 'o' or char == 'u' or char == 'y')):
+				beginning = char
+				ending += 'ay'
+				flag  = True
+			if(flag == False):
+				ending += char		
+			if (flag == True and checker > 0):
+				beginning += char
+			if (flag == True and checker == 0):
+				checker += 1
+		newWord = beginning + ending
+
+		print(word) 
+		print("beginning " + beginning)
+		print("ending " + ending)
+		print("newWord " + newWord)
+else:
+	print ("You didn't enter anything valid. Can't have numbers or punctuation")
