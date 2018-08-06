@@ -1,0 +1,46 @@
+#python pig latin sentence
+
+list = input();
+
+words = list.split()
+
+newWord = ''
+sentence = ''
+
+if len(words) > 0:
+	for word in words:
+		flag = False
+		checker = 0
+		beginning = ''
+		ending = ''
+		if (newWord != ''):
+		#adds a space between each word in the sentence
+			sentence += ' '
+		
+		for char in word:
+			#checks for the rules of piglatin
+			if (flag == False and (char == 'a' or char == 'e' or char == 'i'  or char == 'o' or char == 'u' or char == 'y')):
+				beginning = char
+				ending += 'ay'
+				flag  = True
+			if(flag == False):
+				ending += char		
+			if (flag == True and checker > 0):
+				beginning += char
+			if (flag == True and checker == 0):
+				checker += 1
+		newWord = beginning + ending
+		sentence += newWord 
+
+		# shows what the beginning of the word is
+		#print("beginning " + beginning + "\n")
+		
+		#shows what the endding of the word is going to be
+		#print("ending " + ending + "\n")
+		
+		#shows what the new word will be
+		#print("newWord " + newWord + "\n")
+	
+	print ("sentence " + sentence)
+else:
+	print ("You didn't enter anything valid. Can't have numbers or punctuation")
